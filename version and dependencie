@@ -1,0 +1,17 @@
+[33mcommit 70f67fc0d57a970a8f6129cf1d0e91a9ad702f9b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: iput2022_taniguchi <tk220028aya.taniguchi@gmail.com>
+Date:   Wed May 7 11:19:59 2025 +0900
+
+    Update Next.js version and dependencies
+
+[33mcommit f790cfb0160236cb2104ed118e3a9d69d858794e[m
+Author: iput2022_taniguchi <tk220028aya.taniguchi@gmail.com>
+Date:   Wed May 7 11:06:39 2025 +0900
+
+    Initial commit
+
+[33mcommit b0852b587ac66a8d243c98aa143e77c6220513fb[m
+Author: iput2022_taniguchi <tk220028aya.taniguchi@gmail.com>
+Date:   Tue May 6 16:45:40 2025 +0900
+
+    Initial commit from Create Next App
