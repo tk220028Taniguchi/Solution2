@@ -9,13 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/papaparse": "^5.3.16",
     "bcryptjs": "^3.0.2",
     "chart.js": "^4.4.9",
+    "file-saver": "^2.0.5",
+    "html-to-image": "^1.11.13",
     "mongoose": "^8.14.1",
     "next": "^15.3.2",
     "next-auth": "^4.24.11",
+    "papaparse": "^5.5.2",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "recharts": "^2.15.3",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

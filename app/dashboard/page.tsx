@@ -96,7 +96,7 @@ const Dashboard = () => {
         {/* KPIカード */}
         <div className="kpi-grid flex flex-wrap gap-4 mb-8">
           <div className="kpi-card flex-1 min-w-[200px] bg-white rounded-lg shadow-lg p-4 text-center text-lg">
-            📈 異常判定件数：<strong>5</strong>
+            📈 異常判定件数：<strong>0</strong>
           </div>
           <div className="kpi-card flex-1 min-w-[200px] bg-white rounded-lg shadow-lg p-4 text-center text-lg">
             📤 CSVダウンロード数：<strong>18</strong>
