@@ -3,12 +3,15 @@
 
 // import bcrypt from "bcryptjs"; // 本番ではこれを使う
 // lib/auth.ts
+
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GitHubProvider from "next-auth/providers/github"; // GitHub OAuthプロバイダをインポート
 import clientPromise from "@/utils/database";
 
-export const authOptions : NextAuthOptions= {
+export const authOptions: NextAuthOptions = {
   providers: [
+    // 既存のCredentialsProvider
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -33,11 +36,17 @@ export const authOptions : NextAuthOptions= {
         return null; // ユーザーが見つからないか、パスワードが一致しない場合
       },
     }),
+
+    // 新たにGitHub OAuthプロバイダを追加
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID!,  // GitHubのClient IDを環境変数から取得
+      clientSecret: process.env.GITHUB_SECRET!,  // GitHubのClient Secretを環境変数から取得
+    }),
   ],
   session: {
-    strategy: "jwt", // JWTセッション
+    strategy: "jwt", // JWTセッションを使用
   },
   pages: {
-    signIn: "/", // ログインページ
+    signIn: "/", // ログインページを指定
   },
 };
