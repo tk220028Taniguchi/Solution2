@@ -3,7 +3,6 @@
 
 // import bcrypt from "bcryptjs"; // 本番ではこれを使う
 // lib/auth.ts
-
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
@@ -14,18 +13,17 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" },
+        username: { label: "Username", type: "text", value: "" }, // ← defaultを追加
+        password: { label: "Password", type: "password", value: "" }, // ← defaultを追加
       },
       async authorize(credentials) {
-        //  ここが重要：undefinedチェック
+        // 明示的な未定義チェック
         if (!credentials || !credentials.username || !credentials.password) {
-          throw new Error("Missing credentials");
+          return null;
         }
 
         const client = await clientPromise;
         const db = client.db("Solution2Database");
-
         const user = await db.collection("users").findOne({ username: credentials.username });
 
         if (user && user.password === credentials.password) {
@@ -35,7 +33,6 @@ export const authOptions: NextAuthOptions = {
             email: user.email || null,
           };
         }
-
         return null;
       },
     }),
