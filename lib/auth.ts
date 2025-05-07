@@ -13,12 +13,12 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text", value: "" }, // ← defaultを追加
-        password: { label: "Password", type: "password", value: "" }, // ← defaultを追加
+        username: { label: "Username", type: "text", value: "" },
+        password: { label: "Password", type: "password", value: "" },
       },
       async authorize(credentials) {
-        // 明示的な未定義チェック
-        if (!credentials || !credentials.username || !credentials.password) {
+        // ✅ credentials が undefined の場合は null を返して即終了
+        if (!credentials || typeof credentials.username !== "string" || typeof credentials.password !== "string") {
           return null;
         }
 
@@ -33,6 +33,7 @@ export const authOptions: NextAuthOptions = {
             email: user.email || null,
           };
         }
+
         return null;
       },
     }),
