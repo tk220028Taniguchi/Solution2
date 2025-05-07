@@ -6,10 +6,37 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
-import clientPromise from "@/utils/database";
+import clientPromise from '../utils/database';
 
 export const authOptions: NextAuthOptions = {
   providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        username: { label: "Username", type: "text", value: "" }, // ← defaultを追加
+        password: { label: "Password", type: "password", value: "" }, // ← defaultを追加
+      },
+      async authorize(credentials) {
+        // 明示的な未定義チェック
+        if (!credentials || !credentials.username || !credentials.password) {
+          return null;
+        }
+
+        const client = await clientPromise;
+        const db = client.db("Solution2Database");
+        const user = await db.collection("users").findOne({ username: credentials.username });
+
+        if (user && user.password === credentials.password) {
+          return {
+            id: user._id.toString(),
+            name: user.username,
+            email: user.email || null,
+          };
+        }
+        return null;
+      },
+    }),
+
     GitHubProvider({
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
