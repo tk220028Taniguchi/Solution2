@@ -103,7 +103,7 @@ const ParticleGraphPage: React.FC = () => {
         </div>
 
         {/* 判定結果 */}
-        <div className="text-center mt-10 mb-4">
+        <div className="text-center mt-11 mb-4">
           <div className="text-2xl font-bold inline-block">
             判定結果：{" "}
             <span className={isNormal() ? 'text-green-600' : 'text-red-600'}>
