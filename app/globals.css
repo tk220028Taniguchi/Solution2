@@ -1,7 +1,9 @@
 @import "tailwindcss";
+@import "../public/style.css";  /* 相対パスを調整して追記 */
+
 
 :root {
-  --background: #ffffff;
+  --background: #f4f3fb;
   --foreground: #171717;
 }
 

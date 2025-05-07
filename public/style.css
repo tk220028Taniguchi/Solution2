@@ -1,0 +1,284 @@
+/* public/style.css */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #eaecef;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #003366;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 1000;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 60px; /* ナビゲーションバーの下に表示 */
+    left: 0;
+    width: 200px;
+    height: calc(100vh - 60px); /* ナビゲーションバーの高さを引いて残りの高さを設定 */
+    background: #e3eaf0;
+    padding-top: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .main {
+    padding-left: 225px; /* サイドバーの幅分だけ左側に余白を取る */
+    padding-right: 2rem; /* 右側の余白調整 */
+    padding-top: 80px; /* ナビゲーションバーを避けるために余白を取る */
+    width: 100%; /* 横幅を100%に設定 */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .kpi-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%; /* KPIカードが横並びに広がるように調整 */
+  }
+  
+  .kpi-card {
+    flex: 1 1 200px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  
+  .wear-level {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+  
+  .gauge {
+    height: 30px;
+    background: #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  
+  .timeline {
+    border-left: 3px solid #003366;
+    margin-left: 1rem;
+    padding-left: 1rem;
+  }
+  
+  .timeline-entry {
+    margin-bottom: 1rem;
+  }
+  
+  .timeline-entry time {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .login-container {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .login-container h1 {
+    color: #003366;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.2s;
+  }
+  
+  .login-form input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .login-form button {
+    padding: 0.75rem;
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-form button:hover {
+    background-color: #005599;
+  }
+  
+  .login-note {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 1rem;
+  }
+
+
+  /* public/style.css */
+
+/* アカウントページのスタイル */
+.account-page-container {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .account-page-container h1 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+  }
+  
+  .account-info {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+  
+  .account-info th,
+  .account-info td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .account-info th {
+    background-color: #f4f4f4;
+    color: #003366;
+    font-weight: bold;
+  }
+  
+  .account-info td {
+    font-size: 1rem;
+  }
+  
+  .account-info td strong {
+    color: #003366;
+  }
+  
+  .account-page-container .button {
+    background-color: #003366;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1rem;
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .account-page-container .button:hover {
+    background-color: #0055cc;
+  }
+  
+  .account-page-container .button:active {
+    background-color: #002d5b;
+  }
+  
+  /* ログインしていない場合のメッセージ */
+  .account-page-container .not-logged-in {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+  }
+  
+  .account-page-container .not-logged-in a {
+    color: #003366;
+    text-decoration: none;
+  }
+  
+  .account-page-container .not-logged-in a:hover {
+    text-decoration: underline;
+  }
+  
+
+  /* CSVダウンロード履歴ページのスタイル */
+
+  .csv-table {
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .csv-table th,
+  .csv-table td {
+    padding: 0.9rem;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .csv-table th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .download-btn {
+    padding: 0.6rem 1.2rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .download-btn:hover {
+    background: #0056b3;
+  }
+  
+  
