@@ -113,7 +113,7 @@ const Dashboard = () => {
           </h1>
           <p>
             現在の摩耗粒子数は <strong>{current.toLocaleString()}</strong> 個です。交換タイミングの目安は{" "}
-            <strong>8,000</strong> 個です。
+            <strong>8,000</strong> 個です。※開発途中
           </p>
           <div className="gauge bg-[#eee] rounded-full overflow-hidden mt-2">
             <div
