@@ -1,26 +1,19 @@
-// セッション管理用(今のところ主に「アカウント情報表示用」)
-// lib/auth.ts
-
-// import bcrypt from "bcryptjs"; // 本番ではこれを使う
 // lib/auth.ts
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GitHubProvider from "next-auth/providers/github";
-import clientPromise from '../utils/database';
+import clientPromise from "@/utils/database";
 
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text", value: "" }, // ← defaultを追加
-        password: { label: "Password", type: "password", value: "" }, // ← defaultを追加
+        username: { label: "Username", type: "text" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // 明示的な未定義チェック
-        if (!credentials || !credentials.username || !credentials.password) {
-          return null;
-        }
+        if (!credentials?.username || !credentials?.password) return null;
+        console.log("✅ authorize called with:", credentials);
 
         const client = await clientPromise;
         const db = client.db("Solution2Database");
@@ -31,21 +24,37 @@ export const authOptions: NextAuthOptions = {
             id: user._id.toString(),
             name: user.username,
             email: user.email || null,
+            role: user.role || "user",
           };
         }
+
         return null;
       },
     }),
-
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID!,
-      clientSecret: process.env.GITHUB_SECRET!,
-    }),
   ],
+
   session: {
     strategy: "jwt",
   },
+
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.role = user.role || "user";
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id;
+        session.user.role = token.role;
+      }
+      return session;
+    },
+  },
+
   pages: {
-    signIn: "/",
+    signIn: "/login",
   },
 };

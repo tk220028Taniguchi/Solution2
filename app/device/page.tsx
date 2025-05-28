@@ -36,9 +36,9 @@ const DevicePage = () => {
         <div className="mt-6 text-right">
           <Link
             href="/dashboard"
-            className="inline-block bg-[#003366] text-white px-4 py-2 rounded hover:bg-[#005599]"
+            className="inline-block bg-[#003366] text-white px-4 py-1 rounded hover:bg-[#005599]"
           >
-            ← ダッシュボードへ戻る
+            戻る
           </Link>
         </div>
       </div>

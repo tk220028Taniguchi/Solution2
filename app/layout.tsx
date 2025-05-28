@@ -1,10 +1,14 @@
-"use client"; // クライアントサイドコンポーネントとして扱う
+// app/layout.tsx
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Providers } from "./providers"; // ← クライアント側で分離したProvider
 
-import { Inter } from 'next/font/google';
-import './globals.css';
-import { SessionProvider } from "next-auth/react"; // 必要なインポート
+const inter = Inter({ subsets: ["latin"] });
 
-const inter = Inter({ subsets: ['latin'] });
+export const metadata = {
+  title: "Your App",
+  description: "Your description",
+};
 
 export default function RootLayout({
   children,
@@ -12,15 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SessionProvider>
-      <html lang="ja">
-        <head>
-          <link rel="stylesheet" href="/style.css" /> 
-        </head>
-        <body className={inter.className}> 
-          {children} 
-        </body>
-      </html>
-    </SessionProvider>
+    <html lang="ja">
+      <head>
+        <link rel="stylesheet" href="/style.css" />
+      </head>
+      <body className={inter.className}>
+        <Providers>{children}</Providers> {/* ✅ SessionProviderはここ */}
+      </body>
+    </html>
   );
 }

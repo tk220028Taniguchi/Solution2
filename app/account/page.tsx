@@ -57,15 +57,9 @@ const AccountPage = () => {
         <div className="mt-6 flex justify-between">
           <Link
             href="/dashboard"
-            className="inline-block bg-[#003366] text-white px-4 py-2 rounded hover:bg-[#005599]"
+            className="inline-block bg-[#003366] text-white px-4 py-1 rounded hover:bg-[#005599]"
           >
-            ← ダッシュボードへ戻る
-          </Link>
-          <Link
-            href="/account/settings" // アカウント設定ページへのリンク
-            className="inline-block bg-[#ff6600] text-white px-4 py-2 rounded hover:bg-[#ff8533]"
-          >
-            アカウント設定
+            戻る
           </Link>
         </div>
       </div>

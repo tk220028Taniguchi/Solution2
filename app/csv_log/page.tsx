@@ -44,9 +44,9 @@ const CsvDownloadPage = () => {
         <div className="mt-6">
           <Link
             href="/dashboard"
-            className="inline-block bg-[#003366] text-white px-6 py-3 rounded hover:bg-[#005599]"
+            className="inline-block bg-[#003366] text-white px-6 py-1 rounded hover:bg-[#005599]"
           >
-            ← ダッシュボードへ戻る
+            戻る
           </Link>
         </div>
       </div>
