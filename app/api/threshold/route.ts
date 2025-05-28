@@ -1,4 +1,5 @@
 // app/api/threshold/route.ts
+export const runtime = "nodejs";
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
