@@ -1,4 +1,5 @@
 // app/api/latest-csv/route.ts
+export const runtime = "nodejs";
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
