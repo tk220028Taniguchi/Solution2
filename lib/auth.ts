@@ -1,4 +1,5 @@
 // lib/auth.ts
+// lib/auth.ts
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import clientPromise from "@/utils/database";
@@ -12,23 +13,45 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.username || !credentials?.password) return null;
         console.log("✅ authorize called with:", credentials);
 
-        const client = await clientPromise;
-        const db = client.db("Solution2Database");
-        const user = await db.collection("users").findOne({ username: credentials.username });
+        if (!credentials?.username || !credentials?.password) {
+          console.log("❌ ユーザー名またはパスワードが未入力");
+          return null;
+        }
 
-        if (user && user.password === credentials.password) {
+        try {
+          const client = await clientPromise;
+          const db = client.db("Solution2Database");
+          console.log("✅ MongoDB接続成功");
+
+          const user = await db
+            .collection("users")
+            .findOne({ username: credentials.username });
+
+          console.log("🔍 ユーザー検索結果:", user);
+
+          if (!user) {
+            console.log("❌ ユーザーが見つかりません");
+            return null;
+          }
+
+          if (user.password !== credentials.password) {
+            console.log("❌ パスワードが一致しません");
+            return null;
+          }
+
+          console.log("✅ 認証成功");
           return {
             id: user._id.toString(),
             name: user.username,
             email: user.email || null,
             role: user.role || "user",
           };
+        } catch (err) {
+          console.error("❌ authorize エラー:", err);
+          throw new Error("認証エラーが発生しました");
         }
-
-        return null;
       },
     }),
   ],
@@ -57,4 +80,6 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
   },
+
+  secret: process.env.NEXTAUTH_SECRET, // ✅ 本番でも必要
 };
