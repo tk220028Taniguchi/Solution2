@@ -1,5 +1,5 @@
 // app/api/email_setting/route.ts
-export const runtime = "nodejs";
+
 import { NextRequest, NextResponse } from "next/server";
 import clientPromise from "@/utils/database";
 import { getToken } from "next-auth/jwt";

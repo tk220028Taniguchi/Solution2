@@ -1,5 +1,5 @@
 // app/api/account/password/route.ts
-export const runtime = "nodejs";
+
 import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 import clientPromise from "@/utils/database";
@@ -7,6 +7,7 @@ import clientPromise from "@/utils/database";
 export async function POST(req: NextRequest) {
   try {
     const token = await getToken({ req }); // ← ここで認証トークン取得
+    console.log("🪪 token:", token);
     if (!token || !token.name) {
       return NextResponse.json({ error: "未認証のリクエストです" }, { status: 401 });
     }
