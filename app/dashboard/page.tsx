@@ -78,7 +78,7 @@ const Dashboard = () => {
         {/* 摩耗スコア画像挿入 */}
         <div className="wear-graph bg-white p-4 rounded-lg shadow-lg mb-8">
           <h1 className="text-xl font-bold mt-5 mb-5">🛠 摩耗スコア推移グラフ</h1>
-          <img src="/particle_score2.png" alt="摩耗スコアグラフ" className="w-full h-auto rounded mx-auto" />
+          <img src="/particle_score3.png" alt="摩耗スコアグラフ" className="w-full h-auto rounded mx-auto" />
         </div>
 
         {/* ✅ 定期レポート出力ボタン */}
